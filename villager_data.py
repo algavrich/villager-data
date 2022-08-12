@@ -34,12 +34,13 @@ def all_species(filename):
     species = set(species_list)
     return species
 
-print(all_species("villagers.csv"))
+# print(all_species("villagers.csv"))
 #Cyrano|Anteater|Cranky|Education|Don't punch your nose to spite your face.
 
 def get_villagers_by_species(filename, search_string="All"):
     """Return a list of villagers' names by species.
-
+    
+    
     Arguments:
         - filename (str): the path to a data file
         - search_string (str): optional, the name of a species
@@ -48,11 +49,31 @@ def get_villagers_by_species(filename, search_string="All"):
         - list[str]: a list of names
     """
 
-    villagers = []
-
     # TODO: replace this with your code
 
-    return sorted(villagers)
+    # open villager_data to variable
+    # create empty villager_names list
+    # loop through each line in villager_data
+        # split each line at pipe delimeter
+        # unpack list of split "things"
+        # if search_string is "All"
+            # append name to villager_names
+        # else
+            # if species is same as search_string
+                # append name to villager_names list
+    villager_data = open(filename)
+    villager_names = []
+    for villager in villager_data:
+        tokens = villager.split("|")
+        name, species, personality, hobby, motto = tokens
+        if search_string == "All":
+            villager_names.append(name)
+        else:
+            if search_string == species:
+                villager_names.append(name)
+    return sorted(villager_names)
+
+#print(get_villagers_by_species("villagers.csv", search_string="Anteater"))
 
 
 def all_names_by_hobby(filename):
